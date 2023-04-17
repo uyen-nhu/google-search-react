@@ -6,7 +6,8 @@ function App() {
     {
       title: 'JavaScript Tutorial - W3School',
       description: `Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, PHP, Python, Bootstrap, Java!`,
-      url: 'www.w3schools.com',
+      url: 'https://www.w3schools.com',
+      urlName: 'www.w3schools.com',
       links: [
         {
           title: 'JavaScript Introduction',
@@ -25,7 +26,8 @@ function App() {
     {
       title: 'JavaScript | MDN',
       description: `JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-className functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat.`,
-      url: 'developer.mozilla.org',
+      url: 'https://developer.mozilla.org',
+      urlName: 'developer.mozilla.org',
       links: [
         {
           title: 'JavaScript Operators',
@@ -44,7 +46,8 @@ function App() {
     {
       title: 'JavaScript - Wikipedia',
       description: `JavaScript often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time.`,
-      url: 'en.wikipedia.org',
+      url: 'https://en.wikipedia.org',
+      urlName: 'en.wikipedia.org',
       links: [
         {
           title: 'JavaScript Online',
@@ -74,15 +77,15 @@ function App() {
         <div className="search-result">
           {data.map((d) => (
             <>
-              <span className="website-name">{d.url}</span>
-              <a className="link" href="{}">
+              <span className="website-name">{d.urlName}</span>
+              <a className="link" href={d.url}>
                 <h2>{d.title}</h2>
               </a>
               <p>{d.description}</p>
               <ul>
                 {d.links.map((el, i) => (
                   <li key={i}>
-                    <a className="link" href="">
+                    <a className="link" href={el.url}>
                       {el.title}
                     </a>
                   </li>
