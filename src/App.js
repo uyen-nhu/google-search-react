@@ -6,7 +6,7 @@ function App() {
     {
       title: 'JavaScript Tutorial - W3School',
       description: `Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL, PHP, Python, Bootstrap, Java!`,
-      url: 'https://www.w3schools.com/js/',
+      url: 'www.w3schools.com',
       links: [
         {
           title: 'JavaScript Introduction',
@@ -44,7 +44,7 @@ function App() {
     {
       title: 'JavaScript - Wikipedia',
       description: `JavaScript often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time.`,
-      url: 'https://de.wikipedia.org/wiki/JavaScript',
+      url: 'en.wikipedia.org',
       links: [
         {
           title: 'JavaScript Online',
@@ -69,115 +69,27 @@ function App() {
       </nav>
 
       <main>
-        <span className="number-of-results">37 Results</span>
+        <span className="number-of-results">{data.length} Results</span>
 
         <div className="search-result">
-          <span className="website-name">www.w3schools.com</span>
-          <a className="link" href="https://www.w3schools.com/js/">
-            <h2>JavaScript Tutorial - W3School</h2>
-          </a>
-          <p>
-            Well organized and easy to understand Web building tutorials with
-            lots of examples of how to use HTML, CSS, JavaScript, SQL, PHP,
-            Python, Bootstrap, Java.
-          </p>
-          <ul>
-            <li>
-              <a
-                className="link"
-                href="https://www.w3schools.com/js/js_intro.asp"
-              >
-                JavaScript Introduction
+          {data.map((d) => (
+            <>
+              <span className="website-name">{d.url}</span>
+              <a className="link" href="{}">
+                <h2>{d.title}</h2>
               </a>
-            </li>
-            <li>
-              <a
-                className="link"
-                href="https://www.w3schools.com/js/js_functions.asp"
-              >
-                JS Functions
-              </a>
-            </li>
-            <li>
-              <a
-                className="link"
-                href="https://www.w3schools.com/js/js_examples.asp"
-              >
-                JavaScript Examples
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="search-result">
-          <span className="website-name">developer.mozilla.org</span>
-          <a
-            className="link"
-            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript?retiredLocale=de"
-          >
-            <h2>JavaScript | MDN</h2>
-          </a>
-          <p>
-            JavaScript (JS) is a lightweight, interpreted, or just-in-time
-            compiled programming language with first-className functions. While
-            it is most well-known as the scripting language for Web pages, many
-            non-browser environments also use it, such as Node.js, Apache
-            CouchDB and Adobe Acrobat.
-          </p>
-          <ul>
-            <li>
-              <a
-                className="link"
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators"
-              >
-                JavaScript Operator
-              </a>
-            </li>
-            <li>
-              <a
-                className="link"
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
-              >
-                JavaScript Code
-              </a>
-            </li>
-            <li>
-              <a
-                className="link"
-                href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics"
-              >
-                JavaScript Meaning
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="search-result">
-          <span className="website-name">en.wikipedia.org</span>
-          <a className="link" href="https://de.wikipedia.org/wiki/JavaScript">
-            <h2>JavaScript - Wikipedia</h2>
-          </a>
-          <p>
-            JavaScript often abbreviated as JS, is a programming language that
-            conforms to the ECMAScript specification. JavaScript is high-level,
-            often just-in-time.
-          </p>
-          <ul>
-            <li>
-              <a
-                className="link"
-                href="https://en.wikipedia.org/wiki/JavaScript#History"
-              >
-                JavaScript Online
-              </a>
-            </li>
-            <li>
-              <a
-                className="link"
-                href="https://en.wikipedia.org/wiki/JavaScript#:~:text=JavaScript%20is%20a%20high%2Dlevel,functional%2C%20and%20imperative%20programming%20styles."
-              >
-                JavaScript Definition
-              </a>
-            </li>
-          </ul>
+              <p>{d.description}</p>
+              <ul>
+                {d.links.map((el, i) => (
+                  <li key={i}>
+                    <a className="link" href="">
+                      {el.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
         </div>
       </main>
     </div>
