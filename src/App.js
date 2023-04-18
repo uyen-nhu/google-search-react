@@ -72,15 +72,15 @@ function App() {
       <main>
         <span className="number-of-results">{data.length} Results</span>
 
-        {data.map((d, i) =>
-          d.links.map((el) => (
+        {data.map((result, i) =>
+          result.links.map((link) => (
             <Result
               key={i}
-              title={d.title}
-              desc={d.description}
-              url={d.url}
-              linkTitle={el.title}
-              linkUrl={el.url}
+              title={result.title}
+              desc={result.description}
+              url={result.url}
+              linkTitle={link.title}
+              linkUrl={link.url}
             />
           ))
         )}
