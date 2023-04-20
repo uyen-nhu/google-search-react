@@ -2,17 +2,19 @@ function Result(props) {
   return (
     <>
       <div className="search-result">
-        <span className="website-name">{props.url}</span>
-        <a className="link" href={props.url}>
-          <h2>{props.title}</h2>
+        <span className="website-name">{props.result.url}</span>
+        <a className="link" href={props.result.url}>
+          <h2>{props.result.title}</h2>
         </a>
-        <p>{props.desc}</p>
+        <p>{props.result.description}</p>
         <ul>
-          <li>
-            <a className="link" href={props.linkUrl}>
-              {props.linkTitle}
-            </a>
-          </li>
+          {props.result.links.map((link, i) => (
+            <li key={i}>
+              <a className="link" href={link.url}>
+                {link.title}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </>

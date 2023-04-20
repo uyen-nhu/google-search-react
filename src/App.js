@@ -1,6 +1,7 @@
 import logo from './logo.svg'
 import './App.css'
 import Result from './Result.js'
+import { useState } from 'react'
 
 function App() {
   let data = [
@@ -59,31 +60,55 @@ function App() {
     },
   ]
 
+  const [results, setResults] = useState([])
+  // const [searchTerm, setSearchTerm] = useState('')
+
+  const search = (e) => {
+    e.preventDefault()
+    console.log(e.target.search.value)
+
+    setResults(
+      data.filter(
+        (results, i) =>
+          results.title
+            .toLowerCase()
+            .includes(e.target.search.value.toLowerCase()) ||
+          results.description
+            .toLowerCase()
+            .includes(e.target.search.value.toLowerCase()) ||
+          results.url
+            .toLowerCase()
+            .includes(e.target.search.value.toLowerCase())
+      )
+    )
+  }
+
   return (
     <div className="App">
       <nav>
         <img className="logo" src="images/google.png" />
-        <form className="search">
-          <input type="text" />
+        <form className="search" onSubmit={(e) => search(e)}>
+          <input type="text" name="search" />
           <button>Search</button>
         </form>
       </nav>
 
       <main>
-        <span className="number-of-results">{data.length} Results</span>
+        <span className="number-of-results">
+          {results.length} {results.length != 1 ? 'Results' : 'Result'}
+        </span>
 
-        {data.map((result, i) =>
-          result.links.map((link) => (
-            <Result
-              key={i}
-              title={result.title}
-              desc={result.description}
-              url={result.url}
-              linkTitle={link.title}
-              linkUrl={link.url}
-            />
-          ))
-        )}
+        {results.map((result, i) => (
+          <Result
+            key={i}
+            result={result}
+            // title={result.title}
+            // desc={result.description}
+            // url={result.url}
+            // linkTitle={link.title}
+            // linkUrl={link.url}
+          />
+        ))}
 
         {/* <div className="search-result">
           {data.map((d) => (
