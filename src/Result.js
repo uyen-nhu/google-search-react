@@ -1,7 +1,7 @@
 function Result(props) {
   return (
     <>
-      <div className="search-result">
+      <div key={props.key} className="search-result">
         <span className="website-name">{props.result.url}</span>
         <a className="link" href={props.result.url}>
           <h2>{props.result.title}</h2>
