@@ -64,14 +64,12 @@ function App() {
   const [results, setResults] = useState([])
 
   const getData = async (val) => {
-    let response = await axios.get(
-      'https://project-google-search-api-demo.herokuapp.com/results',
-      {
-        params: {
-          search: val,
-        },
-      }
-    )
+    let response = await axios.get('http://localhost:4000/results', {
+      params: {
+        search: val,
+      },
+    })
+    console.log(response.data)
     return setResults(response.data)
   }
 
